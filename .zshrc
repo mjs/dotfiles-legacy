@@ -5,7 +5,11 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
-. ~/dotfiles/shell/alias
+export SHELL=/bin/zsh
+
+alias ls="ls --color=auto"
+alias ll="ls -lh --color=auto"
+
 test -e ~/.alias && . ~/.alias || true
 test -e ~/.env && . ~/.env || true
 test -e ~/.site.sh && . ~/.site.sh || true
@@ -26,11 +30,6 @@ autoload -U compinit && compinit
 autoload -U bashcompinit && bashcompinit
 source /etc/bash_completion &> /dev/null
 
-# Add completion support for pew
-if command -v pew &> /dev/null; then
-    source `pew shell_config`
-fi
-
 # Allow completion mid-word
 zstyle ':completion:*' completer _complete _list _match _prefix
 
@@ -38,7 +37,7 @@ zstyle ':completion:*' completer _complete _list _match _prefix
 zstyle ':completion:*' hosts off
 
 # Make git completion fast at the expense of some lost functionality
-__git_files () { 
+__git_files () {
     _wanted files expl 'local files' _files
 }
 
@@ -74,13 +73,13 @@ esac
 bindkey -v    # Vi key bindings
 
 # Bind in both Vi modes
-function bindglobal () 
+function bindglobal ()
 {
     bindkey -v $@
     bindkey -a $@
 }
 
-# # Keep some Emacsy bindings 
+# # Keep some Emacsy bindings
 bindglobal '^A' beginning-of-line
 bindglobal '^E' end-of-line
 bindglobal '^P' up-history
@@ -122,13 +121,10 @@ alias dh='dirs -v'
 
 # Syntax highlighting in the shell
 # Must be loaded last.
-source ~/dotfiles/zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source ~/.local/lib/zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
-export SHELL=/bin/zsh
-
-
-# Powerlevel10k
-source ~/dotfiles/zsh/powerlevel10k/powerlevel10k.zsh-theme
+# Powerlevel10k prompt 
+source ~/.local/lib/zsh/powerlevel10k/powerlevel10k.zsh-theme
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
