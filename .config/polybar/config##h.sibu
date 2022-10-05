@@ -1,0 +1,27 @@
+include-file = /home/menno/.config/polybar/base
+
+[bar/main]
+inherit = bar/base
+monitor = "eDP1"
+modules-right = loadavg temperature memory bat0 date
+
+tray-position = right
+
+[bar/alt]
+inherit = bar/base
+monitor = "DP-1-0"
+modules-right = 
+tray-position = 
+
+
+[module/temperature]
+thermal-zone = 8
+
+[module/network]
+interface = wlp3s0
+
+[module/bat0]
+inherit = module/battery-base
+battery = BAT0
+adapter = AC
+
