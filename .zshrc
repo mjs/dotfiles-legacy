@@ -119,6 +119,8 @@ DIRSTACKSIZE=20
 setopt autopushd pushdminus pushdsilent pushdtohome
 alias dh='dirs -v'
 
+source ~/.local/lib/zsh/zsh-z.plugin.zsh
+
 # Syntax highlighting in the shell
 # Must be loaded last.
 source ~/.local/lib/zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
