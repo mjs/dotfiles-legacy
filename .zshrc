@@ -15,7 +15,9 @@ test -e ~/.env && . ~/.env || true
 test -e ~/.site.sh && . ~/.site.sh || true
 
 # Turn off software flow control (Ctrl-S/Q)
-stty -ixon <$TTY >$TTY
+if [[ -z $DISTROBOX_ENTER_PATH ]]; then
+    stty -ixon <$TTY >$TTY
+fi
 
 # This may have been temporarily set during startup if config is shared with bash
 unsetopt no_nomatch
