@@ -1,0 +1,47 @@
+[user]
+    name = Menno Finlay-Smits
+    email = hello@menno.io
+[color]
+    diff = auto
+    status = auto
+    branch = auto
+[pager]
+    all = auto
+[core]
+    pager = less -R
+[alias]
+    co = checkout
+    ci = commit --verbose
+    st = status
+    fo = fetch origin
+    d = diff
+    ds = diff --staged
+    du = diff @{u}..
+    b = branch
+    brlog = log @{upstream}..
+    rpull = pull --rebase
+    dcom = svn dcommit
+    dpush = svn dcommit
+    dpull = svn rebase
+    log1 = log --pretty=tformat:\"%C(yellow)%h%Creset %C(cyan)%ar%Creset %Cgreen%an%Creset %s\"
+    logone = log --oneline
+    logu = log @{u}..
+    glog = log --graph 
+    outgoing = !git svn dcommit -n | grep '^diff-tree' | sed -e 's/diff-tree//' | xargs git diff --stat
+    mylog = log --oneline --author=menno 'HEAD@{1 week 1 day}..' 
+    svnlog1 = svn log --oneline
+    oldest-ancestor = !zsh -c 'diff --old-line-format='' --new-line-format='' <(git rev-list --first-parent "${1:-master}") <(git rev-list --first-parent "${2:-HEAD}") | head -1' -
+    branchdiff = '!sh -c "git diff `git oldest-ancestor`.."'
+    branchlog = '!sh -c "git log `git oldest-ancestor`.."'
+    logpr = log --reverse --pretty=format:"%B%n---%n" @{u}..
+
+[push]
+    default = current
+[credential]
+    helper = store
+[github]
+    user = mjs
+[init]
+	defaultBranch = main
+[pull]
+	ff = only
