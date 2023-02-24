@@ -1,0 +1,21 @@
+theme = "snazzy"
+
+[editor]
+mouse = false
+auto-pairs = false
+soft-wrap.enable = true
+gutters = ["diagnostics", "diff"]  # no line numbers needed
+true-color = true  # for colours to work in tmux
+
+[editor.cursor-shape]
+insert = "bar"
+normal = "block"
+select = "block"
+
+[keys.normal]
+"}" = "goto_next_paragraph"
+"{" = "goto_prev_paragraph"
+
+[keys.select]
+"}" = "goto_next_paragraph"
+"{" = "goto_prev_paragraph"
