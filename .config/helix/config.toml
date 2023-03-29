@@ -1,3 +1,13 @@
+# TODO 
+# Try out ltex-ls for spell checking Markdown, commit messages etc - https://microblog.desipenguin.com/post/grammar-check-with-helix-editor/
+
+### Features I want Helix to have ###
+# Selection history 
+# Terminal titles - https://github.com/helix-editor/helix/pull/2444 
+# Comment aware reflow
+# Command expansions - https://github.com/helix-editor/helix/pull/3393
+# Git integration
+
 theme = "nightfox"
 
 [editor]
@@ -13,9 +23,35 @@ normal = "block"
 select = "block"
 
 [keys.normal]
+
+# Some non-invasive bindings for Vim muscle memory
 "}" = "goto_next_paragraph"
 "{" = "goto_prev_paragraph"
+0 = "goto_line_start"
+"$" = "goto_line_end"
+"^" = "goto_first_nonwhitespace"
+G = "goto_file_end"
+V = ["select_mode", "extend_to_line_bounds"]
+D = ["extend_to_line_end", "yank_main_selection_to_clipboard", "delete_selection"]
+
+# Hacks until there's a built-in selection history
+"x" = ["save_selection", "extend_line_below"]
+"/" = ["save_selection", "search"]
+
+# Mirror some space mode binding to return as this works nicely with the ergodox
+[keys.normal.ret]
+"f" = "file_picker"
+"b" = "buffer_picker"
+"d" = "diagnostics_picker"
+"r" = "rename_symbol"
+"R" = "replace_with_yanked"
 
 [keys.select]
+
+# Some non-invasive bindings for Vim muscle memory
 "}" = "goto_next_paragraph"
 "{" = "goto_prev_paragraph"
+0 = "goto_line_start"
+"$" = "goto_line_end"
+"^" = "goto_first_nonwhitespace"
+G = "goto_file_end"
