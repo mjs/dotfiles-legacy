@@ -1,0 +1,13 @@
+add_newline = false
+
+[line_break]
+disabled = true
+
+[package]
+disabled = true
+
+[nodejs]
+symbol = "[⬢](bold green) "
+
+[golang]
+symbol = "Go "

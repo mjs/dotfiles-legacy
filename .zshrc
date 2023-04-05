@@ -12,7 +12,6 @@ alias ll="ls -lh --color=auto"
 
 test -e ~/.alias && . ~/.alias || true
 test -e ~/.env && . ~/.env || true
-test -e ~/.site.sh && . ~/.site.sh || true
 
 # Turn off software flow control (Ctrl-S/Q)
 if [[ -z $DISTROBOX_ENTER_PATH ]]; then
@@ -123,12 +122,10 @@ alias dh='dirs -v'
 
 source ~/.local/lib/zsh/zsh-z.plugin.zsh
 
+eval "$(starship init zsh)"
+
 # Syntax highlighting in the shell
 # Must be loaded last.
 source ~/.local/lib/zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
-# Powerlevel10k prompt 
-source ~/.local/lib/zsh/powerlevel10k/powerlevel10k.zsh-theme
-
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+test -e ~/.site.sh && . ~/.site.sh || true
